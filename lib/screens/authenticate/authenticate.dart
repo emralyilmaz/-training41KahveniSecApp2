@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:training41kahvenisecapp2/screens/authenticate/sign_in.dart';
+import 'package:training41kahvenisecapp2/screens/authenticate/register(uyeolma).dart';
+// import 'package:training41kahvenisecapp2/screens/authenticate/sign_in.dart';
 
 class Authenicate extends StatefulWidget {
   @override
@@ -9,6 +10,6 @@ class Authenicate extends StatefulWidget {
 class _AuthenicateState extends State<Authenicate> {
   @override
   Widget build(BuildContext context) {
-    return SignIn();
+    return Register();
   }
 }

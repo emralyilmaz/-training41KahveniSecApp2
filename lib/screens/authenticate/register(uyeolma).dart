@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:training41kahvenisecapp2/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _authService =
       AuthService(); // auth.dart sayfasında classa erişim sağlandı.
 
@@ -20,7 +20,7 @@ class _SignInState extends State<SignIn> {
         backgroundColor: Color.fromRGBO(149, 87, 48, 1),
         elevation: 0, // gölgelik
         title: Text(
-          "Giriş Yapınız",
+          "Üye olunuz",
           style: TextStyle(color: Color.fromRGBO(252, 251, 227, 1)),
         ),
         centerTitle: true,
@@ -56,7 +56,7 @@ class _SignInState extends State<SignIn> {
                 RaisedButton(
                     color: Color.fromRGBO(149, 87, 48, 1),
                     child: Text(
-                      "Giriş Yap",
+                      "Üye ol",
                       style: TextStyle(color: Color.fromRGBO(252, 251, 227, 1)),
                     ),
                     onPressed: () {
