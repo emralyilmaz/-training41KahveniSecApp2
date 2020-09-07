@@ -22,4 +22,8 @@ class AuthService {
       return null;
     }
   }
+
+  Stream<Kullanici> get user {
+    return _auth.authStateChanges.call().map(_firebasedenGelenKullanici);
+  }
 }
