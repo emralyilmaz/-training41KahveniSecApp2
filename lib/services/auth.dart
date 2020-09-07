@@ -23,6 +23,9 @@ class AuthService {
     }
   }
 
+  // bağlantının sürekli açık kalabilmesi için stream kullanılmıştır.
+  // uygulamaya giriş yapıldıgında signin olan kullanıcının durumunun değişip
+  // değişmediğini bize söyleyen metod(authStateChanges) kullanılmıştır.
   Stream<Kullanici> get user {
     return _auth.authStateChanges.call().map(_firebasedenGelenKullanici);
   }
