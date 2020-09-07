@@ -16,9 +16,9 @@ class Wrapper extends StatelessWidget {
         context); // value değeri user içerisine aktarıldı.
     print(user);
     if (user == null) {
-      return Authenicate();
+      return Authenicate(); // kuulanıcı yoksa bu sayfaya
     } else {
-      return Home();
+      return Home(); // kullanıcı varsa bu sayfaya yönleniyor.
     }
   }
 }

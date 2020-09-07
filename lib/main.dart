@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       // kullanıcı uygulamayı kullanırken sign out olursa signOut işlemi gerçekleştirilip
       // herhangi bir işlem yapması önlenir.
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,

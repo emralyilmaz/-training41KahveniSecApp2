@@ -16,6 +16,7 @@ class AuthService {
       UserCredential result =
           await _auth.signInAnonymously(); // AuthResult yerine
       User user = result.user;
+      print(user.uid);
       return _firebasedenGelenKullanici(user);
     } catch (e) {
       print(e.toString());
@@ -28,5 +29,13 @@ class AuthService {
   // değişmediğini bize söyleyen metod(authStateChanges) kullanılmıştır.
   Stream<Kullanici> get user {
     return _auth.authStateChanges.call().map(_firebasedenGelenKullanici);
+  }
+
+  Future signOut() async {
+    try {
+      return await _auth.signOut();
+    } catch (e) {
+      return null;
+    }
   }
 }

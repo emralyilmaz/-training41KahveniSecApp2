@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:training41kahvenisecapp2/services/auth.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -6,6 +7,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final AuthService _auth = AuthService();
+  // artık _auth ile içerisindeki metodlara erişim sağlanılabilir.
+  // burada firebaseden gelen kullanıcı bilgisi yok
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +22,9 @@ class _HomeState extends State<Home> {
           ),
           actions: [
             FlatButton.icon(
-                onPressed: () {},
+                onPressed: () async {
+                  await _auth.signOut();
+                },
                 icon: Icon(Icons.person_outline,
                     color: Color.fromRGBO(252, 251, 227, 1)),
                 label: Text("Çıkış",
