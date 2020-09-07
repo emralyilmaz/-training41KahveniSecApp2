@@ -15,6 +15,8 @@ class _RegisterState extends State<Register> {
 
   String email = "";
   String password = "";
+  final _formKey = GlobalKey<FormState>(); //text formfieldları kontrol için
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,41 +43,50 @@ class _RegisterState extends State<Register> {
         child: Container(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
             child: Form(
+                key: _formKey,
                 child: Column(
-              children: [
-                SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                  onChanged: (val) {
-                    setState(() {
-                      email = val;
-                    });
-                  },
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                  obscureText: true,
-                  onChanged: (val) {
-                    password = val;
-                  },
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                RaisedButton(
-                    color: Color.fromRGBO(149, 87, 48, 1),
-                    child: Text(
-                      "Üye ol",
-                      style: TextStyle(color: Color.fromRGBO(252, 251, 227, 1)),
+                  children: [
+                    SizedBox(
+                      height: 20,
                     ),
-                    onPressed: () {
-                      print("$email ve $password");
-                    })
-              ],
-            ))),
+                    TextFormField(
+                      validator: (val) =>
+                          val.isEmpty ? "Lütfen mail adresinizi giriniz" : null,
+                      onChanged: (val) {
+                        setState(() {
+                          email = val;
+                        });
+                      },
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TextFormField(
+                      validator: (val) => val.length < 5
+                          ? "Parola en az 6 karakerterden oluşturulmalı"
+                          : null,
+                      obscureText: true,
+                      onChanged: (val) {
+                        password = val;
+                      },
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    RaisedButton(
+                        color: Color.fromRGBO(149, 87, 48, 1),
+                        child: Text(
+                          "Üye ol",
+                          style: TextStyle(
+                              color: Color.fromRGBO(252, 251, 227, 1)),
+                        ),
+                        onPressed: () {
+                          if (_formKey.currentState.validate()) {
+                            print("$email ve $password");
+                          }
+                        })
+                  ],
+                ))),
       ),
     );
   }
