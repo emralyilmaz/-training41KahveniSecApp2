@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:training41kahvenisecapp2/services/auth.dart';
 
 class SignIn extends StatefulWidget {
+  final Function toggleSayfa;
+  SignIn({this.toggleSayfa});
+
   @override
   _SignInState createState() => _SignInState();
 }
@@ -24,6 +27,16 @@ class _SignInState extends State<SignIn> {
           style: TextStyle(color: Color.fromRGBO(252, 251, 227, 1)),
         ),
         centerTitle: true,
+        actions: [
+          FlatButton.icon(
+              onPressed: () {
+                widget.toggleSayfa();
+              },
+              icon: Icon(Icons.person_add,
+                  color: Color.fromRGBO(252, 251, 227, 1)),
+              label: Text("Üye Ol",
+                  style: TextStyle(color: Color.fromRGBO(252, 251, 227, 1))))
+        ],
       ),
       body: Center(
         child: Container(
