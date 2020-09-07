@@ -22,20 +22,37 @@ class _SignInState extends State<SignIn> {
         ),
         centerTitle: true,
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-        child: RaisedButton(
-            child: Text("Misafir Giriş",
-                style: TextStyle(color: Color.fromRGBO(252, 251, 227, 1))),
-            color: Color.fromRGBO(149, 87, 48, 1),
-            onPressed: () async {
-              dynamic sonuc = await _authService.signInAnonim();
-              if (sonuc == null) {
-                print("Giriş Başarısızdır.");
-              } else {
-                return (sonuc.uid);
-              }
-            }),
+      body: Center(
+        child: Container(
+            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+            child: Form(
+                child: Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  onChanged: (val) {},
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  obscureText: true,
+                  onChanged: (val) {},
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                RaisedButton(
+                    color: Color.fromRGBO(149, 87, 48, 1),
+                    child: Text(
+                      "Giriş Yap",
+                      style: TextStyle(color: Color.fromRGBO(252, 251, 227, 1)),
+                    ),
+                    onPressed: () {})
+              ],
+            ))),
       ),
     );
   }
