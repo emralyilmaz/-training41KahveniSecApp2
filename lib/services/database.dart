@@ -26,4 +26,13 @@ class DatabaseService {
     // siparisCollection.doc(uid) kullanıcı için oluşturulan belgeye erişildi.
     // veriGuncelle metodu çalıştığı zaman kullanıcının uid'sine bakarak belge oluşturulabilecek.
   }
+
+// cloud Firestore'dan Veri Getirmek için bir metod değilde bir properti oluşturulcak
+// veriler uzak bir veritabanında saklı olduğundan stream kullanılacak
+//  verilere erişmek için QuerySnapshot tipi kullanılacak.
+  Stream<QuerySnapshot> get siparisler {
+    return siparisCollection.snapshots();
+    // snapshots() ile daha önce oluşturulmuş olan
+    // siparisCollection içerisindeki siparişler getirilmiş olacak.
+  }
 }
