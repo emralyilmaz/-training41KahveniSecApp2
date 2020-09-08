@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:training41kahvenisecapp2/services/auth.dart';
+import 'package:training41kahvenisecapp2/shared/contants.dart';
 
 class Register extends StatefulWidget {
   final Function toggleSayfa;
@@ -52,14 +53,15 @@ class _RegisterState extends State<Register> {
                       height: 20,
                     ),
                     TextFormField(
-                      validator: (val) =>
-                          val.isEmpty ? "Lütfen mail adresinizi giriniz" : null,
-                      onChanged: (val) {
-                        setState(() {
-                          email = val;
-                        });
-                      },
-                    ),
+                        validator: (val) => val.isEmpty
+                            ? "Lütfen mail adresinizi giriniz"
+                            : null,
+                        onChanged: (val) {
+                          setState(() {
+                            email = val;
+                          });
+                        },
+                        decoration: inputDecoration),
                     SizedBox(
                       height: 20,
                     ),
@@ -71,6 +73,10 @@ class _RegisterState extends State<Register> {
                       onChanged: (val) {
                         password = val;
                       },
+                      decoration: inputDecoration.copyWith(
+                          hintText: "Parola giriniz",
+                          icon: Icon(Icons.vpn_key,
+                              color: Color.fromRGBO(149, 87, 48, 1))),
                     ),
                     SizedBox(
                       height: 50,

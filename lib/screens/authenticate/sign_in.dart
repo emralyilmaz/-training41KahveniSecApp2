@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:training41kahvenisecapp2/services/auth.dart';
+import 'package:training41kahvenisecapp2/shared/contants.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleSayfa;
@@ -56,6 +57,7 @@ class _SignInState extends State<SignIn> {
                       email = val;
                     });
                   },
+                  decoration: inputDecoration,
                 ),
                 SizedBox(
                   height: 20,
@@ -65,6 +67,10 @@ class _SignInState extends State<SignIn> {
                   onChanged: (val) {
                     password = val;
                   },
+                  decoration: inputDecoration.copyWith(
+                      hintText: "Parola giriniz",
+                      icon: Icon(Icons.vpn_key,
+                          color: Color.fromRGBO(149, 87, 48, 1))),
                 ),
                 SizedBox(
                   height: 50,
