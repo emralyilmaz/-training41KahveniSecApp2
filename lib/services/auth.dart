@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:training41kahvenisecapp2/models/user.dart';
+import 'package:training41kahvenisecapp2/services/database.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -44,6 +45,11 @@ class AuthService {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: mail, password: parola);
       User user = result.user;
+
+      await DatabaseService(uid: user.uid)
+          .veriGuncelle("yeni kullanıcı", "0", 1);
+      // artık register oluşturulduğu zaman firebasedede oluşturulmuş olcak
+
       return _firebasedenGelenKullanici(user);
     } catch (error) {
       print(error.toString());
