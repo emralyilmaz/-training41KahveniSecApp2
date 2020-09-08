@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:training41kahvenisecapp2/models/order.dart';
 
 // firebase'in için bulunan cloud firestore'a bilgileri aktarabiliriz.
 
@@ -27,11 +28,22 @@ class DatabaseService {
     // veriGuncelle metodu çalıştığı zaman kullanıcının uid'sine bakarak belge oluşturulabilecek.
   }
 
+  List<Siparis> _snapshottanGelenSiparis(QuerySnapshot snap) {
+    return snap.docs.map((doc) {
+      var docFunc = doc.data();
+      return Siparis(
+        isim: docFunc['isim'] ?? "",
+        seker: docFunc['seker'] ?? "0",
+        koyuluk: docFunc['koyuluk'] ?? 0,
+      );
+    }).toList();
+  }
+
 // cloud Firestore'dan Veri Getirmek için bir metod değilde bir properti oluşturulcak
 // veriler uzak bir veritabanında saklı olduğundan stream kullanılacak
 //  verilere erişmek için QuerySnapshot tipi kullanılacak.
-  Stream<QuerySnapshot> get siparisler {
-    return siparisCollection.snapshots();
+  Stream<List<Siparis>> get siparisler {
+    return siparisCollection.snapshots().map(_snapshottanGelenSiparis);
     // snapshots() ile daha önce oluşturulmuş olan
     // siparisCollection içerisindeki siparişler getirilmiş olacak.
   }

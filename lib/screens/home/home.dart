@@ -1,6 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:training41kahvenisecapp2/models/order.dart';
 import 'package:training41kahvenisecapp2/screens/home/order_list.dart';
 import 'package:training41kahvenisecapp2/services/auth.dart';
 import 'package:training41kahvenisecapp2/services/database.dart';
@@ -16,7 +17,18 @@ class _HomeState extends State<Home> {
   // burada firebaseden gelen kullanıcı bilgisi yok
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<QuerySnapshot>.value(
+    //   void ayarlarPaneliniGoster() {
+    //   showModalBottomSheet(
+    //       context: context,
+    //       builder: (context) {
+    //         return Container(
+    //           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+    //           child: SettingForm(),
+    //         );
+    //       });
+    // }
+
+    return StreamProvider<List<Siparis>>.value(
       value: DatabaseService().siparisler,
 // artık valu bilgisine baska bir dosyadan erişilebilir hale getirildi.
       child: Scaffold(
