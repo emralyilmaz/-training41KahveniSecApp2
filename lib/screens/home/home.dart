@@ -17,16 +17,16 @@ class _HomeState extends State<Home> {
   // burada firebaseden gelen kullanıcı bilgisi yok
   @override
   Widget build(BuildContext context) {
-    //   void ayarlarPaneliniGoster() {
-    //   showModalBottomSheet(
-    //       context: context,
-    //       builder: (context) {
-    //         return Container(
-    //           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-    //           child: SettingForm(),
-    //         );
-    //       });
-    // }
+    void ayarlarPaneliniGoster() {
+      showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 60),
+              child: Text("ayarlar Paneli"),
+            );
+          });
+    }
 
     return StreamProvider<List<Siparis>>.value(
       value: DatabaseService().siparisler,
@@ -41,13 +41,19 @@ class _HomeState extends State<Home> {
           ),
           actions: [
             FlatButton.icon(
+                onPressed: () => ayarlarPaneliniGoster(),
+                icon: Icon(Icons.settings,
+                    color: Color.fromRGBO(252, 251, 227, 1)),
+                label: Text("Ayarlar",
+                    style: TextStyle(color: Color.fromRGBO(252, 251, 227, 1)))),
+            FlatButton.icon(
                 onPressed: () async {
                   await _auth.signOut();
                 },
                 icon: Icon(Icons.person_outline,
                     color: Color.fromRGBO(252, 251, 227, 1)),
                 label: Text("Çıkış",
-                    style: TextStyle(color: Color.fromRGBO(252, 251, 227, 1))))
+                    style: TextStyle(color: Color.fromRGBO(252, 251, 227, 1)))),
           ],
         ),
         body: SiparisList(),
