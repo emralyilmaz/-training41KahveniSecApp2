@@ -20,6 +20,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     void ayarlarPaneliniGoster() {
       showModalBottomSheet(
+          backgroundColor: Color.fromRGBO(252, 251, 227, 1),
           context: context,
           builder: (context) {
             return Container(
