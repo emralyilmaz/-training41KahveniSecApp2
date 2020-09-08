@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:training41kahvenisecapp2/models/order.dart';
+import 'package:training41kahvenisecapp2/models/user.dart';
 
 // firebase'in için bulunan cloud firestore'a bilgileri aktarabiliriz.
 
@@ -46,5 +47,21 @@ class DatabaseService {
     return siparisCollection.snapshots().map(_snapshottanGelenSiparis);
     // snapshots() ile daha önce oluşturulmuş olan
     // siparisCollection içerisindeki siparişler getirilmiş olacak.
+  }
+
+  KullaniciVeriler _snapshottanGelenKullaniciVerileri(DocumentSnapshot snap) {
+    return KullaniciVeriler(
+      uid: uid,
+      isim: snap.data()["isim"],
+      seker: snap.data()["seker"],
+      koyuluk: snap.data()["koyuluk"],
+    );
+  }
+
+  Stream<KullaniciVeriler> get kullaniciVerileri {
+    return siparisCollection
+        .doc(uid)
+        .snapshots()
+        .map(_snapshottanGelenKullaniciVerileri);
   }
 }
