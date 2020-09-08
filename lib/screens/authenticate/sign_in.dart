@@ -15,6 +15,9 @@ class _SignInState extends State<SignIn> {
 
   String email = "";
   String password = "";
+
+  String error = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,9 +75,18 @@ class _SignInState extends State<SignIn> {
                       "Giriş Yap",
                       style: TextStyle(color: Color.fromRGBO(252, 251, 227, 1)),
                     ),
-                    onPressed: () {
-                      print("$email ve $password");
-                    })
+                    onPressed: () async {
+                      dynamic sonuc =
+                          await _authService.signIn(email, password);
+                      if (sonuc == null) {
+                        setState(() {
+                          error = "Giriş Başarısız.";
+                        });
+                      }
+                      // print("$email ve $password");
+                    }),
+                SizedBox(height: 15),
+                Text(error, style: TextStyle(color: Colors.red, fontSize: 15))
               ],
             ))),
       ),

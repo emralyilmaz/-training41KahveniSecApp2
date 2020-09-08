@@ -17,6 +17,8 @@ class _RegisterState extends State<Register> {
   String password = "";
   final _formKey = GlobalKey<FormState>(); //text formfieldları kontrol için
 
+  String error = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,11 +82,22 @@ class _RegisterState extends State<Register> {
                           style: TextStyle(
                               color: Color.fromRGBO(252, 251, 227, 1)),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           if (_formKey.currentState.validate()) {
-                            print("$email ve $password");
+                            //print("$email ve $password");
+                            dynamic sonuc =
+                                await _authService.register(email, password);
+                            if (sonuc == null) {
+                              setState(() {
+                                error =
+                                    "Lütfen geçerli bir mail adresi ya da parola giriniz.";
+                              });
+                            }
                           }
-                        })
+                        }),
+                    SizedBox(height: 15),
+                    Text(error,
+                        style: TextStyle(color: Colors.red, fontSize: 15)),
                   ],
                 ))),
       ),
