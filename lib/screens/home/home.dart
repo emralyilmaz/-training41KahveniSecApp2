@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:training41kahvenisecapp2/models/order.dart';
 import 'package:training41kahvenisecapp2/screens/home/order_list.dart';
+import 'package:training41kahvenisecapp2/screens/home/settings_form.dart';
 import 'package:training41kahvenisecapp2/services/auth.dart';
 import 'package:training41kahvenisecapp2/services/database.dart';
 
@@ -23,7 +24,7 @@ class _HomeState extends State<Home> {
           builder: (context) {
             return Container(
               padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 60),
-              child: Text("ayarlar Paneli"),
+              child: SettingForm(),
             );
           });
     }
